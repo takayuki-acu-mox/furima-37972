@@ -35,11 +35,11 @@
 
 ### Association
 
-- belongs_to category_id
-- belongs_to :product_condition_id
-- belongs_to :shipping_fee_id
-- belongs_to :shipment_area_id
-- belongs_to :shipping_date_id
+- belongs_to category
+- belongs_to :product_condition
+- belongs_to :shipping_fee
+- belongs_to :shipment_area
+- belongs_to :shipping_date
 - belongs_to :user
 - has_one :order
 
