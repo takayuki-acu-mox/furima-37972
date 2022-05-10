@@ -6,6 +6,7 @@ class Item < ApplicationRecord
   belongs_to :shipment_area
   belongs_to :shipping_date
   belongs_to :user
+  has_one_attached :image
 
   validates :nickname, presence: true, length: { maximum: 40 }  
   validates :text, presence: true
