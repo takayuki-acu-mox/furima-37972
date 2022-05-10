@@ -49,7 +49,7 @@ RSpec.describe User, type: :model do
           @user.password_confirmation = 'ああああああ'
           @user.valid?
         end
-        
+
 
       it 'passwordが5文字以下では登録できない' do
         @user.password = '12345'
@@ -107,6 +107,36 @@ RSpec.describe User, type: :model do
           @user.first_name_k = ''
           @user.valid?
           expect(@user.errors.full_messages).to include("First name k can't be blank")
+        end
+
+        it 'first_nameが半角では登録できない' do
+          @user.first_name = 'aaaa'
+          @user.valid?
+        end
+
+        it 'last_nameが半角では登録できない' do
+          @user.last_name = 'aaaa'
+          @user.valid?
+        end
+
+        it 'first_name_kが半角では登録できない' do
+          @user.first_name_k = 'aaaa'
+          @user.valid?
+        end
+
+        it 'last_name_kが半角では登録できない' do
+          @user.first_name_k = 'aaaa'
+          @user.valid?
+        end
+
+        it 'first_name_kがカナ以外では登録できない' do
+          @user.first_name_k = 'やまだ'
+          @user.valid?
+        end
+
+        it 'last_name_kがカナ以外では登録できない' do
+          @user.first_name_k = 'たろう'
+          @user.valid?
         end
 
         it "birthdayが空では登録できない" do
