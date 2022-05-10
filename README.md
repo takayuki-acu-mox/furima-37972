@@ -25,7 +25,7 @@
 | item_name             | string     | null: false                        |
 | text                  | text       | null: false                        |
 | category_id           | integer    | null: false                        |
-| product_condition_id  | integer　   | null: false                        |
+| product_condition_id  | integer    | null: false                        |
 | shipping_fee_id       | integer    | null: false                        |
 | shipment_area_id      | integer    | null: false                        |
 | shipping_date_id      | integer    | null: false                        |
