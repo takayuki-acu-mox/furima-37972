@@ -20,7 +20,7 @@ class ShipmentArea < ActiveHash::Base
     { id: 18, name: '石川県' },
     { id: 19, name: '福井県' },
     { id: 20, name: '山梨県' },
-    { id: 12, name: '長野県' },
+    { id: 21, name: '長野県' },
     { id: 22, name: '岐阜県' },
     { id: 23, name: '静岡県' },
     { id: 24, name: '愛知県' },
