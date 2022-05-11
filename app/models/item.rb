@@ -16,11 +16,15 @@ class Item < ApplicationRecord
   validates :price, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to:9_999_999 },
                     presence: { message: "can't be blank"}
   end
-  
+
   validates :category_id, numericality: { other_than: 1, message: "can't be blank"} 
   validates :product_condition_id, numericality: { other_than: 1, message: "can't be blank"} 
   validates :shipping_fee_id, numericality: { other_than: 1, message: "can't be blank"} 
   validates :shipment_area_id, numericality: { other_than: 1, message: "can't be blank"} 
   validates :shipping_date_id, numericality: { other_than: 1, message: "can't be blank"} 
 
+  def was_attached?
+    self.image.attached?
+  end
+  
 end
