@@ -63,29 +63,29 @@ RSpec.describe Item, type: :model do
       end
 
       it 'カテゴリーに「---」が選択されている場合は出品できない' do
-        @item.category_id = 0
+        @item.category_id = 1
         @item.valid?
       end
 
     
       it '商品の状態に「---」が選択されている場合は出品できない' do
-        @item.product_condition_id = 0
+        @item.product_condition_id = 1
         @item.valid?
       end
 
       it '配送料の負担に「---」が選択されている場合は出品できない' do
-        @item.shipping_fee_id = 0
+        @item.shipping_fee_id = 1
         @item.valid?
       end
 
     
       it '発送元の地域に「---」が選択されている場合は出品できない' do
-        @item.shipment_area_id = 0
+        @item.shipment_area_id = 1
         @item.valid?
       end
 
       it '発送までの日数に「---」が選択されている場合は出品できない' do
-        @item.shipping_date_id = 0
+        @item.shipping_date_id = 1
         @item.valid?
       end
 
