@@ -2,8 +2,10 @@ require 'rails_helper'
 
 RSpec.describe OrderAddress, type: :model do
     before do
+      item = FactoryBot.create(:item)
       user = FactoryBot.create(:user)
-      @order_address = FactoryBot.build(:order_address, user_id: user.id)
+      @order_address = FactoryBot.build(:order_address, user_id: user.id, item_id: item.id)
+      sleep 0.1 
     end
 
     describe '商品購入機能' do
@@ -19,12 +21,6 @@ RSpec.describe OrderAddress, type: :model do
     end
 
     context '内容に問題がある場合' do
-
-      # it "priceが空では保存ができないこと" do
-      #   @order.price = nil
-      #   @order.valid?
-      #   expect(@order_address.errors.full_messages).to include("Price can't be blank")
-      # end
 
       it 'tokenが空だと保存できないこと' do
         @order_address.token = nil
@@ -64,8 +60,8 @@ RSpec.describe OrderAddress, type: :model do
         expect(@order_address.errors.full_messages).to include("Phone number can't be blank")
       end
 
-      it 'phone_numberが、10桁以下では保存できないこと' do
-        @order_address.phone_number = '1111111111'
+      it 'phone_numberが、9桁以下では保存できないこと' do
+        @order_address.phone_number = '111111111'
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Phone number is invalid")
       end
@@ -77,7 +73,7 @@ RSpec.describe OrderAddress, type: :model do
       end
 
       it 'phone_numberは半角数字のみ保存可能であること' do
-        @order_address.phone_number = '２２−２２'
+        @order_address.phone_number = '２２２２２２２２２２２'
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Phone number is invalid")
       end
@@ -87,6 +83,12 @@ RSpec.describe OrderAddress, type: :model do
         @order_address.user_id = nil
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("User can't be blank")
+      end
+
+      it 'itemが紐付いていないと保存できないこと' do
+        @order_address.item_id = nil
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("Item can't be blank")
       end
     end
   end
